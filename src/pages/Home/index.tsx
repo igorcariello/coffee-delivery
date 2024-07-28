@@ -5,8 +5,12 @@ import {
   ImageContainer,
   TextContainer,
   CharacteristicsContainer,
+  CoffeesContainer,
+  MainContainer,
 } from './styles'
 import bannerImage from '../../assets/banner.svg'
+import { ShoppingCart, Timer, Package, Coffee } from '@phosphor-icons/react'
+import { Card } from '../../components/Card'
 
 export function Home() {
   const imageBanner = bannerImage
@@ -20,7 +24,40 @@ export function Home() {
             Com o Coffee Delivery você recebe seu café onde estiver, a qualquer
             hora
           </p>
-          <CharacteristicsContainer></CharacteristicsContainer>
+          <CharacteristicsContainer>
+            <div>
+              <ul>
+                <li>
+                  <span className="darkYellow">
+                    <ShoppingCart weight="fill" />
+                  </span>
+                  Compra simples e segura
+                </li>
+                <li>
+                  <span className="yellow">
+                    <Timer weight="fill" />
+                  </span>
+                  Entrega rápida e rastreada
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul>
+                <li>
+                  <span className="gray">
+                    <Package weight="fill" />
+                  </span>
+                  Embalagem mantém o café intacto
+                </li>
+                <li>
+                  <span className="purple">
+                    <Coffee weight="fill" />
+                  </span>
+                  O café chega fresquinho até você
+                </li>
+              </ul>
+            </div>
+          </CharacteristicsContainer>
         </TextContainer>
         <ImageContainer>
           <img
@@ -29,6 +66,12 @@ export function Home() {
           />
         </ImageContainer>
       </BannerContainer>
+      <MainContainer>
+        <h2>Nossos Cafés</h2>
+        <CoffeesContainer>
+          <Card />
+        </CoffeesContainer>
+      </MainContainer>
     </HomeContainer>
   )
 }

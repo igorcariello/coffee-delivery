@@ -8,13 +8,9 @@ export const BannerContainer = styled.div`
 
   display: flex;
   gap: 3.5rem;
-
-  background: blue;
 `
 
 export const TextContainer = styled.div`
-  background: lightblue;
-
   > h1 {
     font-size: 3rem;
     font-weight: 800;
@@ -34,10 +30,81 @@ export const TextContainer = styled.div`
 `
 
 export const ImageContainer = styled.div`
-  background: lightgreen;
-
   width: 29.75rem;
   height: 22.5rem;
 `
 
-export const CharacteristicsContainer = styled.div``
+export const CharacteristicsContainer = styled.div`
+  margin-top: 4rem;
+
+  display: flex;
+  gap: 2.5rem;
+
+  .darkYellow {
+    background: ${(props) => props.theme['yellow-800']};
+  }
+
+  .yellow {
+    background: ${(props) => props.theme['yellow-500']};
+  }
+
+  .purple {
+    background: ${(props) => props.theme['purple-500']};
+  }
+
+  .gray {
+    background: ${(props) => props.theme['gray-600']};
+  }
+
+  > div {
+    ul {
+      height: 5.25rem;
+
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      li {
+        list-style-type: none;
+
+        font-family: 'Roboto', sans-serif;
+        line-height: 130%;
+        color: ${(props) => props.theme['gray-600']};
+
+        font-weight: 400;
+
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        height: 2rem;
+
+        span {
+          width: 2rem;
+          height: 2rem;
+
+          display: flex;
+
+          padding: 0.5rem;
+          border-radius: 50%;
+
+          color: ${(props) => props.theme['white-100']};
+        }
+      }
+    }
+  }
+`
+
+export const MainContainer = styled.main`
+  padding: 2rem 10rem 10rem 10rem;
+
+  > h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 130%;
+    font-family: 'Baloo 2', sans-serif;
+    margin-bottom: 3.375rem;
+  }
+`
+
+export const CoffeesContainer = styled.div``
