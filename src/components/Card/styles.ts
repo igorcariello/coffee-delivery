@@ -10,6 +10,8 @@ export const CardContainer = styled.div`
   border-top-right-radius: 2.25rem;
   border-bottom-left-radius: 2.25rem;
 
+  margin-bottom: 0.5rem;
+
   background: ${(props) => props.theme['white-300']};
 
   display: flex;
@@ -44,6 +46,15 @@ export const CardContainer = styled.div`
     width: 7.5rem;
     height: 7.5rem;
   }
+`
+
+export const TagContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+
+  margin-bottom: 1rem;
 `
 
 export const FooterCard = styled.div`

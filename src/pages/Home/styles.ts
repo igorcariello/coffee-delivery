@@ -96,7 +96,9 @@ export const CharacteristicsContainer = styled.div`
 `
 
 export const MainContainer = styled.main`
-  padding: 2rem 10rem 10rem 10rem;
+  padding: 2rem 10rem 9.5rem 10rem;
+
+  width: 100vw;
 
   > h2 {
     font-size: 2rem;
@@ -107,4 +109,9 @@ export const MainContainer = styled.main`
   }
 `
 
-export const CoffeesContainer = styled.div``
+export const CoffeesContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  flex-wrap: wrap;
+`
