@@ -30,8 +30,13 @@ export const TextContainer = styled.div`
 `
 
 export const ImageContainer = styled.div`
-  width: 29.75rem;
-  height: 22.5rem;
+  max-width: 29.75rem;
+  max-height: 22.5rem;
+
+  > img {
+    max-width: 29.75rem;
+    max-height: 22.5rem;
+  }
 `
 
 export const CharacteristicsContainer = styled.div`

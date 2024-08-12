@@ -1,4 +1,3 @@
-import { Header } from '../../components/Header'
 import {
   BannerContainer,
   HomeContainer,
@@ -25,7 +24,7 @@ import arabe from '../../assets/coffesImages/arabe.svg'
 import irlandes from '../../assets/coffesImages/irlandes.svg'
 
 import { ShoppingCart, Timer, Package, Coffee } from '@phosphor-icons/react'
-import { Card } from '../../components/Card'
+import { Card } from './components/Card'
 
 export function Home() {
   const imageBanner = bannerImage
@@ -46,7 +45,6 @@ export function Home() {
 
   return (
     <HomeContainer>
-      <Header />
       <BannerContainer>
         <TextContainer>
           <h1>Encontre o café perfeito para qualquer hora do dia</h1>
