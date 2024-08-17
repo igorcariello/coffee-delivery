@@ -15,7 +15,7 @@ export function Header() {
         </div>
         <button className="shoppingCart">
           <ShoppingCart weight="fill" />
-          <span>0</span>
+          {/* <span>0</span> */}
         </button>
       </nav>
     </HeaderContainer>

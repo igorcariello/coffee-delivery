@@ -1,19 +1,19 @@
 import styled from 'styled-components'
 
 interface ButtonContainerProps {
-  isSelected: boolean
+  $isSelected: boolean
 }
 
 export const ButtonContainer = styled.button<ButtonContainerProps>`
   outline: 0;
   box-shadow: ${(props) =>
-    props.isSelected ? `0 0 0 2px ${props.theme['purple-500']}` : 0};
+    props.$isSelected ? `0 0 0 2px ${props.theme['purple-500']}` : 0};
 
   width: 100%;
   height: 3.25rem;
 
   background: ${(props) =>
-    props.isSelected
+    props.$isSelected
       ? `${props.theme['purple-100']}`
       : `${props.theme['white-500']}`};
 

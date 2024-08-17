@@ -139,14 +139,37 @@ export const ButtonsPlusAndMinus = styled.div`
     }
   }
 
-  > span {
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type='number'] {
+    appearance: none;
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+  }
+
+  > input {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
+    background: transparent;
+
+    border: none;
 
     width: 1.25rem;
     height: 1.25rem;
 
     font-family: 'Roboto', sans-serif;
+
+    &::placeholder {
+      display: flex;
+      text-align: center;
+
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      color: ${(props) => props.theme['gray-800']};
+    }
   }
 `

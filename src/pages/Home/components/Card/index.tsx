@@ -42,7 +42,7 @@ export function Card({
             <button className="buttonMinus">
               <Minus weight="bold" />
             </button>
-            <span>1</span>
+            <input min={0} max={9} type="number" placeholder="0" />
             <button className="buttonPlus">
               <Plus weight="bold" />
             </button>

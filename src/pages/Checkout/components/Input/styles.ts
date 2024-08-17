@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 interface InputContainerProps {
-  widthInput: string
+  $widthInput: string
 }
 
 export const InputContainer = styled.div<InputContainerProps>`
   display: flex;
   position: relative;
-  flex-grow: ${({ widthInput }) => (widthInput === '100%' ? 1 : 0)};
+  flex-grow: ${({ $widthInput }) => ($widthInput === '100%' ? 1 : 0)};
 
   > input {
     padding: 0.75rem;
@@ -28,6 +28,20 @@ export const InputContainer = styled.div<InputContainerProps>`
     font-family: 'Roboto', sans-serif;
     font-size: 0.875rem;
     line-height: 130%;
+
+    color: ${(props) => props.theme['gray-400']};
+  }
+
+  > p {
+    display: flex;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.8125rem;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    line-height: 130%;
+    font-size: 0.75rem;
 
     color: ${(props) => props.theme['gray-400']};
   }

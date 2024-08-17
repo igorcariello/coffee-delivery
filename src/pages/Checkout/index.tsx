@@ -1,6 +1,5 @@
 import {
-  CheckoutContainer,
-  AnddressAndPaymentContainer,
+  AddressAndPaymentContainer,
   AddressContainer,
   HeaderAddress,
   PaymentContainer,
@@ -12,16 +11,11 @@ import {
   Delivery,
   Total,
   ButtonConfirm,
-  FormAddress,
-  FirstLine,
-  SecondLine,
-  ThirdLine,
-  FourthLine,
   PaymentMethods,
   HeaderPayment,
+  FormContainer,
 } from './styles'
 import { CardSelectedCoffees } from '../Checkout/components/CardSelectedCoffees'
-
 import {
   MapPinLine,
   CurrencyDollar,
@@ -29,22 +23,56 @@ import {
   Bank,
   Money,
 } from '@phosphor-icons/react'
-import { Input } from './components/Input'
 import { PaymentMethod } from './components/PaymentMethod'
 import { useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
+import { InputsAddress } from './components/InputsAddress'
+import * as zod from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 export function Checkout() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
     string | null
   >(null)
 
+  const newOrderFormValidationSchema = zod.object({
+    cep: zod
+      .string()
+      .min(8, 'Informe o CEP de entrega')
+      .max(8, 'O CEP deve conter 8 dígitos'),
+    street: zod.string().min(5, 'Informe a rua de entrega'),
+    number: zod.string().min(1, 'Informe o número de entrega'),
+    complement: zod.string(),
+    neighborhood: zod.string().min(1, 'Informe o bairro de entrega'),
+    city: zod.string().min(3, 'Informe a cidade de entrega'),
+    state: zod
+      .string()
+      .min(1, 'Informe o estado de entrega')
+      .max(2, 'Coloque somente a abreviação do estado'),
+  })
+
+  type NewOrderFormData = zod.infer<typeof newOrderFormValidationSchema>
+
+  const newOrderForm = useForm<NewOrderFormData>({
+    resolver: zodResolver(newOrderFormValidationSchema),
+    defaultValues: {
+      cep: '',
+      street: '',
+      number: '',
+      complement: '',
+      neighborhood: '',
+      city: '',
+      state: '',
+    },
+  })
+
   const handlePaymentMethodSelect = (method: string | null) => {
     setSelectedPaymentMethod(method)
   }
 
   return (
-    <CheckoutContainer>
-      <AnddressAndPaymentContainer>
+    <FormContainer>
+      <AddressAndPaymentContainer>
         <h2>Complete seu pedido</h2>
         <AddressContainer>
           <HeaderAddress>
@@ -54,29 +82,9 @@ export function Checkout() {
               <span>Informe o endereço onde deseja receber seu pedido</span>
             </div>
           </HeaderAddress>
-          <FormAddress>
-            <form action="">
-              <FirstLine>
-                <Input widthInput="12.5rem" type="text" placeholder="CEP" />
-              </FirstLine>
-              <SecondLine>
-                <Input widthInput="35rem" type="text" placeholder="Rua" />
-              </SecondLine>
-              <ThirdLine>
-                <Input widthInput="12.5rem" type="text" placeholder="Número" />
-                <Input
-                  widthInput="100%"
-                  type="text"
-                  placeholder="Complemento"
-                />
-              </ThirdLine>
-              <FourthLine>
-                <Input widthInput="12.5rem" type="text" placeholder="Bairro" />
-                <Input widthInput="100%" type="text" placeholder="Cidade" />
-                <Input widthInput="5rem" type="text" placeholder="UF" />
-              </FourthLine>
-            </form>
-          </FormAddress>
+          <FormProvider {...newOrderForm}>
+            <InputsAddress />
+          </FormProvider>
         </AddressContainer>
         <PaymentContainer>
           <HeaderPayment>
@@ -109,7 +117,7 @@ export function Checkout() {
             />
           </PaymentMethods>
         </PaymentContainer>
-      </AnddressAndPaymentContainer>
+      </AddressAndPaymentContainer>
       <SelectedCoffeesContainer>
         <h2>Cafés Selecionados</h2>
         <MainSelectedCoffees>
@@ -133,9 +141,9 @@ export function Checkout() {
               </strong>
             </Total>
           </CalculationContainer>
-          <ButtonConfirm>Confirmar Pedido</ButtonConfirm>
+          <ButtonConfirm type="submit">Confirmar Pedido</ButtonConfirm>
         </MainSelectedCoffees>
       </SelectedCoffeesContainer>
-    </CheckoutContainer>
+    </FormContainer>
   )
 }

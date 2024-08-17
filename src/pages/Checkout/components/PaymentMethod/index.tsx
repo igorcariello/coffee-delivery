@@ -14,7 +14,7 @@ export function PaymentMethod({
   onClick,
 }: PaymentMethodProps) {
   return (
-    <ButtonContainer type="button" isSelected={isSelected} onClick={onClick}>
+    <ButtonContainer type="button" $isSelected={isSelected} onClick={onClick}>
       <Icon />
       <span>{nameMethod}</span>
     </ButtonContainer>
