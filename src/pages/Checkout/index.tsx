@@ -24,16 +24,25 @@ import {
   Money,
 } from '@phosphor-icons/react'
 import { PaymentMethod } from './components/PaymentMethod'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { InputsAddress } from './components/InputsAddress'
 import * as zod from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { CartContext } from '../../contexts/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 export function Checkout() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
     string | null
   >(null)
+
+  const navigate = useNavigate()
+
+  const { cart, sumValueItemsCart, createOrder } = useContext(CartContext)
+
+  const deliveryFee = 3.5
+  const sumTotal = sumValueItemsCart() + deliveryFee
 
   const newOrderFormValidationSchema = zod.object({
     cep: zod
@@ -66,12 +75,28 @@ export function Checkout() {
     },
   })
 
+  const { handleSubmit } = newOrderForm
+
+  function handleCreateOrder(data: NewOrderFormData) {
+    createOrder({
+      cep: Number(data.cep),
+      street: data.street,
+      number: data.number,
+      complement: data.complement,
+      neighborhood: data.neighborhood,
+      city: data.city,
+      state: data.state,
+      methodpayment: selectedPaymentMethod || '',
+    })
+    navigate('/success')
+  }
+
   const handlePaymentMethodSelect = (method: string | null) => {
     setSelectedPaymentMethod(method)
   }
 
   return (
-    <FormContainer>
+    <FormContainer onSubmit={handleSubmit(handleCreateOrder)} action="">
       <AddressAndPaymentContainer>
         <h2>Complete seu pedido</h2>
         <AddressContainer>
@@ -121,23 +146,36 @@ export function Checkout() {
       <SelectedCoffeesContainer>
         <h2>Cafés Selecionados</h2>
         <MainSelectedCoffees>
-          <CardSelectedCoffees />
-          <DivisorCard />
-          <CardSelectedCoffees />
-          <DivisorCard />
+          {/* <pre>{JSON.stringify(cart)}</pre>
+          <pre>
+            {JSON.stringify(cart.find((item) => item.id === '2')?.amountItem)}
+          </pre> */}
+          {cart.map((item) => (
+            <div key={item.id}>
+              <CardSelectedCoffees
+                id={item.id}
+                name={item.name}
+                valueCoffee={item.valueCoffee}
+                imageCard={item.imageCard}
+                amountItem={Number(item.amountItem)}
+              />
+              <DivisorCard />
+            </div>
+          ))}
+
           <CalculationContainer>
             <TotalItems>
               <p>Total de itens</p>
-              <span>R$ 29,70</span>
+              <span>R$ {sumValueItemsCart().toFixed(2).replace('.', ',')}</span>
             </TotalItems>
             <Delivery>
               <p>Entrega</p>
-              <span>R$ 3,50</span>
+              <span>R$ {deliveryFee.toFixed(2).replace('.', ',')}</span>
             </Delivery>
             <Total>
               <p>Total</p>
               <strong>
-                R$ <span>33,20</span>
+                R$ <span>{sumTotal.toFixed(2).replace('.', ',')}</span>
               </strong>
             </Total>
           </CalculationContainer>

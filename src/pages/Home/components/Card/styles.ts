@@ -103,11 +103,21 @@ export const ButtonsContainer = styled.div`
 
     cursor: pointer;
 
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
     svg {
       width: 1.375rem;
       height: 1.375rem;
 
       color: ${(props) => props.theme['white-100']};
+    }
+
+    transition: 0.25s ease-in;
+    &:hover {
+      filter: brightness(1.3);
     }
   }
 `
@@ -136,6 +146,11 @@ export const ButtonsPlusAndMinus = styled.div`
       height: 0.875rem;
 
       color: ${(props) => props.theme['purple-500']};
+    }
+
+    transition: 0.25s ease-in;
+    &:hover {
+      filter: brightness(1.3);
     }
   }
 

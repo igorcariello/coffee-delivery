@@ -98,102 +98,116 @@ export function Home() {
         <h2>Nossos Cafés</h2>
         <CoffeesContainer>
           <Card
+            id="1"
             tagCoffee={['Tradicional']}
             imageCard={imageExpressoTradicional}
             name="Expresso Tradicional"
             description="O tradicional café feito com água quente e grãos moídos"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="2"
             tagCoffee={['Tradicional']}
             imageCard={imageExpressoAmericano}
             name="Expresso Americano"
             description="Expresso diluído, menos intenso que o tradicional"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="3"
             tagCoffee={['Tradicional']}
             imageCard={imageExpressoCremoso}
             name="Expresso Cremoso"
             description="Café expresso tradicional com espuma cremosa"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="4"
             tagCoffee={['Tradicional', 'Gelado']}
             imageCard={imageExpressoGelado}
             name="Expresso Cremoso"
             description="Bebida preparada com café expresso e cubos de gelo"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="5"
             tagCoffee={['Tradicional', 'com leite']}
             imageCard={imageCafeComLeite}
             name="Café com Leite"
             description="Meio a meio de expresso tradicional com leite vaporizado"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="6"
             tagCoffee={['Tradicional', 'com leite']}
             imageCard={imageLatte}
             name="Latte"
             description="Uma dose de café expresso com o dobro de leite e espuma cremosa"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="7"
             tagCoffee={['Tradicional', 'com leite']}
             imageCard={imageCapuccino}
             name="Capuccino"
             description="Bebida com canela feita de doses iguais de café, leite e espuma"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="8"
             tagCoffee={['Tradicional', 'com leite']}
             imageCard={imageMacchiato}
             name="Macchiato"
             description="Café expresso misturado com um pouco de leite quente e espuma"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="9"
             tagCoffee={['Tradicional', 'com leite']}
             imageCard={imageMocaccino}
             name="Mocaccino"
             description="Café expresso com calda de chocolate, pouco leite e espuma"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="10"
             tagCoffee={['Especial', 'com leite']}
             imageCard={imageChocolateQuente}
             name="Chocolate Quente"
             description="Bebida feita com chocolate dissolvido no leite quente e café"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="11"
             tagCoffee={['Especial', 'alcoólico', 'gelado']}
             imageCard={imageCubano}
             name="Cubano"
             description="Drink gelado de café expresso com rum, creme de leite e hortelã"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="12"
             tagCoffee={['Especial']}
             imageCard={imageHavaiano}
             name="Havaiano"
             description="Bebida adocicada preparada com café e leite de coco"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="13"
             tagCoffee={['Especial']}
             imageCard={imageArabe}
             name="Árabe"
             description="Bebida preparada com grãos de café árabe e especiarias"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
           <Card
+            id="14"
             tagCoffee={['Especial', 'Alcoólico']}
             imageCard={imageIrlandes}
             name="Irlandês"
             description="Bebida a base de café, uísque irlandês, açúcar e chantilly"
-            valueCoffe="9,90"
+            valueCoffee={9.9}
           />
         </CoffeesContainer>
       </MainContainer>

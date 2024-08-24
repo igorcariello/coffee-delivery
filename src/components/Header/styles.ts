@@ -55,6 +55,11 @@ export const HeaderContainer = styled.header`
 
     cursor: pointer;
 
+    &:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
     > svg {
       width: 1.375rem;
       height: 1.375rem;
